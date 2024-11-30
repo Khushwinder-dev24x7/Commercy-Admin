@@ -108,39 +108,6 @@ function Sidebar() {
                   </div>
                 </div>
               </div>
-
-            {/* Vendor */}
-              <div className="alm_nav-item has-sub-menu">
-                <a href="#" className="alm_nav-link text-decoration-none d-flex align-items-center">
-                  {/* left sec */}
-                  <div className="lt d-flex media-body">
-                    <i className="feather-layers st-fs-15 icon"></i>
-                    <span>Vendor</span>
-                  </div>
-
-                  {/* right sec */}
-                  <div className="rt text-center">
-                    <i className="feather-chevron-right st-fs-15 icon"></i>
-                  </div>
-                </a>
-
-                {/* sub menu */}
-                <div className="alm_sub-menu" style={{ display: 'none' }}>
-                  {/* sub menu nav item */}
-                  <div className="alm_sub-nav-item">
-                    <a href="http://localhost/Commercy/public/vendors" className="alm_sub-nav-link text-decoration-none d-flex align-items-center">
-                      Add Vendors
-                    </a>
-                  </div>
-
-                  {/* sub menu nav item */}
-                  <div className="alm_sub-nav-item">
-                    <a href="http://localhost/Commercy/public/vendorpurchaseorders" className="alm_sub-nav-link text-decoration-none d-flex align-items-center">
-                      Purchase Orders
-                    </a>
-                  </div>
-                </div>
-              </div>
             
             {/* Catalog */}
               <div className="alm_nav-item has-sub-menu">
