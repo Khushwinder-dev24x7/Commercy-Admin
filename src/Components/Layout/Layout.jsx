@@ -8,7 +8,7 @@ function Layout() {
             <div className="amw_inner">
 
                 {/* Sidebar */}
-                <div className="app-left-menu-custom">
+                <div className="app-left-menu-custom">                    
                     <Sidebar/>
                 </div>
 
