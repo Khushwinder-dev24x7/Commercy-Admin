@@ -516,7 +516,7 @@ a.remove_button {
 
 }
 .st-form select:not([multiple]):not(.no-select-icon) {
-    background-image: url(../images/icons/select-icon.png);
+    background-image: url("../images/select-icon.png");
     background-repeat: no-repeat;
     background-position: calc(100% - 5px) center;
     padding-right: 15px;

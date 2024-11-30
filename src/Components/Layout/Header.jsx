@@ -11,8 +11,8 @@ function Header() {
           </div>
 
           {/* Search */}
-          <div className="header-search-panel mx-3 col-xs-12 col-md-6" id="global-search-box">
-            <form id="search_list_form" action="http://localhost/Commercy/public/get/global/search/list" method="post">
+          <div className="header-search-panel mx-3 col-xs-12 col-md-6 d-none" id="global-search-box">
+            {/* <form id="search_list_form" action="http://localhost/Commercy/public/get/global/search/list" method="post">
               <input type="hidden" name="_token" value="rcug6Km4ToxJqdkgz1IwZ4j4eRzX6vVuleGAWzh9" />
               <input type="hidden" id="search_mode" name="search_mode" value="all" />
               <div className="input-group w-100">
@@ -48,7 +48,7 @@ function Header() {
                   <div id="search-content"></div>
                 </div>
               </div>
-            </form>
+            </form> */}
           </div>
 
           {/* Header Menu */}

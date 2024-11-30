@@ -21,16 +21,14 @@ function Sidebar() {
             <div className="border-bottom">
               <div className="st-form st-sm st-form-with-label-top">
                 <div className="media-body st-form-input-container w-100 px-2">
-                  <select className="form-control st-sm" name="store_login_id" id="store_login_id">
-                    <option value="http://localhost/Commercy/public/store/login/ruhstaging" selected>
-                      Ruhlistic Decor
-                    </option>
-                    <option value="http://localhost/Commercy/public/store/login/ksons">K Sons</option>
-                    <option value="http://localhost/Commercy/public/store/login/demo">Commercey Demo</option>
-                    <option value="http://localhost/Commercy/public/store/login/poolequip">The Pool Equipment</option>
-                    <option value="http://localhost/Commercy/public/store/login/zeoglife">Zeog Lifestyle</option>
-                    <option value="http://localhost/Commercy/public/store/login/donation">Atamras</option>
-                  </select>
+                <select className="form-control st-sm" name="store_login_id" id="store_login_id">
+                  <option>Ruhlistic Decor</option>
+                  <option>K Sons</option>
+                  <option>Commercey Demo</option>
+                  <option>The Pool Equipment</option>
+                  <option >Zeog Lifestyle</option>
+                  <option>Atamras</option>
+                </select>
                 </div>
               </div>
             </div>

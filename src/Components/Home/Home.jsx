@@ -19,17 +19,7 @@ function Home() {
                     </a>
                   </div>
 
-                  <div className="col-12 mb-3">
-                    <form action="" method="post" id="date-range-form">
-                      <input type="hidden" name="_token" value="BhGkEIVg56Y1vs2n7EOc6wYHtX7eQWnqOK33VkR9" />
-                      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" style={{ margin: '0 0 0 auto' }}>
-                        <div className="input-group date" id="daterangepicker">
-                          <input type="text" className="form-control" id="dateRange" name="dateRange" value="11/23/2024 - 11/30/2024" />
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-
+                 
                   {/* Items */}
                   <div className="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 page-border-box2 w-item mb-3">
                     <a href="/" className="pbb2-inner w-item-inner d-flex text-decoration-none">

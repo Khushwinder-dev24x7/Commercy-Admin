@@ -20,7 +20,6 @@ function Layout() {
 
                     {/* Main Content */}
                     <Outlet/>
-
                 </div>
             </div>
         </div>
