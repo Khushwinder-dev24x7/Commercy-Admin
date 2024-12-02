@@ -1,20 +1,42 @@
 import { Link } from "react-router-dom"
 import logo from '../../assets/images/logo.svg';
 import PropTypes from 'prop-types';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function Sidebar({ toggleSlideClass }) {
 
   const [menu, setmenu] = useState("");
+  const [subMenu,setSubMenu] = useState("");
 
-  const toggleElement = (menuId) => {
-    setmenu((prevState) => (prevState === menuId ? "" : menuId));
+  const toggleElement = (menuId, menuInfo = false) => {
+    const toggleState = (setter) => {
+      setter((prevState) => (prevState === menuId ? "" : menuId));
+    };
+  
+    toggleState(setSubMenu);
+    if (!menuInfo) toggleState(setmenu);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if(!event.target.closest(".alm_nav-item")?.classList.contains("alm_nav-item")){
+           setmenu("");
+           setSubMenu("");
+      }
+      
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+  
   
   return (
-        <div className="inner bg-white h-100 border-end st-border-light">          
+        <div className="inner bg-white h-100">          
             {/* Logo */}
-              <div className="st-logo-custom d-flex align-items-center border-bottom st-border-light">
+              <div className="st-logo-custom d-flex align-items-center border-bottom st-border-light border-end">
                 <Link to="/">
                   <img src={logo} alt="logo" className="img-fluid" />
                 </Link>
@@ -29,7 +51,7 @@ function Sidebar({ toggleSlideClass }) {
               </div>
 
               {/* Store Dropdown */}
-                <div className="border-bottom">
+                <div className="border-bottom border-end st-border-light pt-2-1">
                   <div className="st-form st-sm st-form-with-label-top">
                     <div className="media-body st-form-input-container w-100 px-2">
                     <select className="form-control st-sm" name="store_login_id" id="store_login_id">
@@ -46,6 +68,7 @@ function Sidebar({ toggleSlideClass }) {
 
 
               {/* Sidebar Menu start Here */}
+              <div className="sidebar-menu-main-wrap border-end st-border-light h-100">
                 {/* Dashbord Menu */}
                   <div className="alm_nav-item">
                     <a href="http://localhost/Commercy/public/dashboard" className="alm_nav-link text-decoration-none d-flex align-items-center">
@@ -288,7 +311,7 @@ function Sidebar({ toggleSlideClass }) {
                         </div>
                       </a>
 
-                      <div className="alm_sub-menu" style={{ display: menu === "themes" ? "block" : "none" }}>
+                      <div className="alm_sub-menu submenu-enabled" style={{ display: menu === "themes" ? "block" : "none" }}>
                         <div className="alm_sub-nav-item">
                           <a href="https://mycommercey.com/themes" className="alm_sub-nav-link text-decoration-none d-flex align-items-center">
                             Theme
@@ -305,10 +328,10 @@ function Sidebar({ toggleSlideClass }) {
                           <a
                             href="#"
                             data-menu-id="blogs"
-                            className={`${menu === "blogs" ? "active" : ""} alm_nav-link text-decoration-none d-flex align-items-center`}
+                            className={`${subMenu === "blogs" ? "active" : ""} alm_nav-link text-decoration-none d-flex align-items-center`}
                             onClick={(e) => {
                               e.preventDefault();
-                              toggleElement(e.currentTarget.dataset.menuId);
+                              toggleElement(e.currentTarget.dataset.menuId,true);
                             }}
                           >
                             <div className="lt d-flex media-body">
@@ -316,11 +339,11 @@ function Sidebar({ toggleSlideClass }) {
                             </div>
 
                             <div className="rt text-center">
-                              <i className={`${menu === "blogs" ? "feather-chevron-down" : "feather-chevron-right"} st-fs-15 icon`}></i>
+                              <i className={`${subMenu === "blogs" ? "feather-chevron-down" : "feather-chevron-right"} st-fs-15 icon`}></i>
                             </div>
                           </a>
 
-                          <div className="alm_sub-menu" style={{ display: menu === "blogs" ? "block" : "none" }}>
+                          <div className="alm_sub-menu" style={{ display: subMenu === "blogs" ? "block" : "none" }}>
                             <div className="alm_sub-nav-item">
                               <a href="https://mycommercey.com/blogs" className="alm_sub-nav-link text-decoration-none d-flex align-items-center">
                                 Blog Posts
@@ -343,10 +366,10 @@ function Sidebar({ toggleSlideClass }) {
                           <a
                             href="#"
                             data-menu-id="homePage"
-                            className={`${menu === "homePage" ? "active" : ""} alm_nav-link text-decoration-none d-flex align-items-center`}
+                            className={`${subMenu === "homePage" ? "active" : ""} alm_nav-link text-decoration-none d-flex align-items-center`}
                             onClick={(e) => {
                               e.preventDefault();
-                              toggleElement(e.currentTarget.dataset.menuId);
+                              toggleElement(e.currentTarget.dataset.menuId,true);
                             }}
                           >
                             <div className="lt d-flex media-body">
@@ -354,11 +377,11 @@ function Sidebar({ toggleSlideClass }) {
                             </div>
 
                             <div className="rt text-center">
-                              <i className={`${menu === "homePage" ? "feather-chevron-down" : "feather-chevron-right"} st-fs-15 icon`}></i>
+                              <i className={`${subMenu === "homePage" ? "feather-chevron-down" : "feather-chevron-right"} st-fs-15 icon`}></i>
                             </div>
                           </a>
 
-                          <div className="alm_sub-menu" style={{ display: menu === "homePage" ? "block" : "none" }}>
+                          <div className="alm_sub-menu" style={{ display: subMenu === "homePage" ? "block" : "none" }}>
                             <div className="alm_sub-nav-item">
                               <a href="https://mycommercey.com/sliders" className="alm_sub-nav-link text-decoration-none d-flex align-items-center">
                                 Main Sliders
@@ -416,7 +439,7 @@ function Sidebar({ toggleSlideClass }) {
                       </div>
                     </a>
 
-                    <div className="alm_sub-menu" style={{ display: menu === "settings" ? "block" : "none" }}>
+                    <div className="alm_sub-menu submenu-enabled" style={{ display: menu === "settings" ? "block" : "none" }}>
                       <div className="alm_sub-nav-item">
                         <a href="https://mycommercey.com/storeSetting" className="alm_sub-nav-link text-decoration-none d-flex align-items-center">
                           Store settings
@@ -427,10 +450,10 @@ function Sidebar({ toggleSlideClass }) {
                         <a
                           href="#"
                           data-menu-id="usersRoles"
-                          className={`${menu === "usersRoles" ? "active" : ""} alm_nav-link text-decoration-none d-flex align-items-center`}
+                          className={`${subMenu === "usersRoles" ? "active" : ""} alm_nav-link text-decoration-none d-flex align-items-center`}
                           onClick={(e) => {
                             e.preventDefault();
-                            toggleElement(e.currentTarget.dataset.menuId);
+                            toggleElement(e.currentTarget.dataset.menuId,true);
                           }}
                         >
                           <div className="lt d-flex media-body">
@@ -438,11 +461,11 @@ function Sidebar({ toggleSlideClass }) {
                           </div>
 
                           <div className="rt text-center">
-                            <i className={`${menu === "usersRoles" ? "feather-chevron-down" : "feather-chevron-right"} st-fs-15 icon`}></i>
+                            <i className={`${subMenu === "usersRoles" ? "feather-chevron-down" : "feather-chevron-right"} st-fs-15 icon`}></i>
                           </div>
                         </a>
 
-                        <div className="alm_sub-menu" style={{ display: menu === "usersRoles" ? "block" : "none" }}>
+                        <div className="alm_sub-menu" style={{ display: subMenu === "usersRoles" ? "block" : "none" }}>
                           <div className="alm_sub-nav-item">
                             <a href="https://mycommercey.com/admin/roles" className="alm_sub-nav-link text-decoration-none d-flex align-items-center">
                               Admin Roles
@@ -505,8 +528,8 @@ function Sidebar({ toggleSlideClass }) {
                       </div>
                     </div>
                   </div>
+                </div>
               {/* Sidebar Menu end Here */}
-
         </div>
 
   )

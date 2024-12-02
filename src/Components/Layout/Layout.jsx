@@ -11,8 +11,8 @@ const toggleSlideClass = () => {
   };
 
   return (
-        <div className="app-main-wrapper">
-             <div className={`amw_inner ${isSlideActive ? "app-left-menu-slide" : ""}`}>
+        <div className="app-main-wrapper h-100">
+             <div className={`amw_inner d-lg-flex align-content-stretch h-100 ${isSlideActive ? "app-left-menu-slide" : ""}`}>
 
                 {/* Sidebar */}
                 <div className="app-left-menu-custom">                    
@@ -20,7 +20,7 @@ const toggleSlideClass = () => {
                 </div>
 
                 {/* Right Side Content */}
-                <div className="app-main-content d-flex flex-column">
+                <div className="app-main-content d-flex flex-column w-100">
 
                     {/* Header */}
                     <Header/>
